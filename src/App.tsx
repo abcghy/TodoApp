@@ -1,72 +1,74 @@
-import React, { ReactNode, useState } from "react";
-import Check from "./icon/Check";
-import UnCheck from "./icon/UnCheck";
+import { ReactNode, useState } from "react";
+import TodoItem from "./component/TodoItem";
 
-interface ButtonProps {
-  children: ReactNode;
+interface TodoItemListProps {
+  todoList: string[];
 }
 
-function Button({ children }: ButtonProps) {
+function TodoItemList({ todoList }: TodoItemListProps) {
   return (
-    <div className="btn">
-      {children}
+    <div className="w-full mt-4">
+      {todoList.map((todo, index) => (
+        <TodoItem key={index} onDelete={() => {}}>
+          {todo}
+        </TodoItem>
+      ))}
     </div>
   );
 }
 
-interface CheckboxProps {
-  isChecked: boolean;
-  setChecked: (checked: boolean) => void;
+interface AddInputProps {
+  onAddTodo: (todo: string) => void;
 }
 
-function Checkbox({isChecked, setChecked}: CheckboxProps) {
-  return (
-    <div className="cursor-pointer" onClick={() => setChecked(!isChecked)}>
-      {isChecked ? <Check /> : <UnCheck />}
-    </div>
-  );
-}
-
-interface TodoItemProps {
-  // isChecked: boolean;
-  children: ReactNode;
-}
-
-function TodoItem({children}: TodoItemProps) {
-  const [isChecked, setChecked] = useState(false);
-  return (
-    <div className="flex hover:(bg-red-50)">
-      <Checkbox isChecked={isChecked} setChecked={setChecked}/>
-      <div className={`cursor-pointer ${isChecked && "line-through"}`} onClick={() => {setChecked(!isChecked)}}>{children}</div>
-    </div>
-  )
-}
-
-function TodoItemList() {
-  return (
-    <div className="w-full">
-      <TodoItem>看一本书</TodoItem>
-      <TodoItem>找到国外如何寻找民主的书</TodoItem>
-      <TodoItem>Hello World</TodoItem>
-      <TodoItem>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</TodoItem>
-    </div>
-  )
-}
-
-function AddInput() {
+function AddInput({ onAddTodo }: AddInputProps) {
+  const [todo, setTodo] = useState("");
   return (
     <div className="flex w-full">
-      <input type="text" className="bg-white px-4 py-2 rounded mr-2 flex-grow bg-gray-200" placeholder="输入今天的任务"/>
-      <Button>添加</Button>
+      <input
+        type="text"
+        className="bg-white text-lg px-4 py-2 rounded mr-2 flex-grow bg-gray-200"
+        placeholder="输入今天的任务"
+        value={todo}
+        onChange={(e) => {
+          setTodo(e.target.value);
+        }}
+      />
+      <div
+        className="btn text-lg"
+        onClick={() => {
+          if (todo.length > 0) {
+            onAddTodo(todo);
+          } else {
+            // toast nothing added
+          }
+          setTodo("");
+        }}
+      >
+        添加
+      </div>
     </div>
-  )
+  );
+}
+
+function TodoApp() {
+  const [todos, setTodos] = useState<string[]>(["读一本书"]);
+  return (
+    <div className="w-160 rounded-xl bg-white mx-auto p-10 shadow-lg">
+      <AddInput
+        onAddTodo={(todo) => {
+          setTodos([...todos, todo]);
+        }}
+      />
+      <TodoItemList todoList={todos} />
+    </div>
+  );
 }
 
 function App() {
   return (
-    <div className="mx-auto flex flex-col justify-center h-screen w-160">
-      <AddInput />
-      <TodoItemList />
+    <div className="bg-gray-100 h-screen pt-20">
+      <TodoApp />
     </div>
   );
 }
