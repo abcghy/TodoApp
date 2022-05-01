@@ -16,7 +16,7 @@ function TodoItem({ todo, onDone, onDelete }: TodoItemProps) {
         e.preventDefault();
       }}
     >
-      <Checkbox isChecked={todo.isDone} setChecked={() => {}} />
+      <Checkbox isChecked={todo.isDone} />
       <div className={`ml-1 flex-1 text-xl ${todo.isDone && "line-through"}`}>
         {todo.value}
       </div>

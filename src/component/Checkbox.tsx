@@ -3,15 +3,11 @@ import UnCheck from "../icon/UnCheck";
 
 interface CheckboxProps {
   isChecked: boolean;
-  setChecked: (checked: boolean) => void;
 }
 
-function Checkbox({ isChecked, setChecked }: CheckboxProps) {
+function Checkbox({ isChecked }: CheckboxProps) {
   return (
-    <div
-      className="cursor-pointer my-auto"
-      onClick={() => setChecked(!isChecked)}
-    >
+    <div className="cursor-pointer my-auto">
       {isChecked ? <Check /> : <UnCheck />}
     </div>
   );
