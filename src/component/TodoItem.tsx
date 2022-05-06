@@ -1,5 +1,8 @@
+import { useDraggable } from "@dnd-kit/core";
+import { useSortable } from "@dnd-kit/sortable";
 import Todo from "../model/Todo";
 import Checkbox from "./Checkbox";
+import { CSS } from "@dnd-kit/utilities";
 
 interface TodoItemProps {
   todo: Todo;
@@ -8,13 +11,32 @@ interface TodoItemProps {
 }
 
 function TodoItem({ todo, onDone, onDelete }: TodoItemProps) {
+  const {
+    isDragging,
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({ id: todo.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 1 : 0,
+  };
+
   return (
     <div
-      className="flex items-center align-center cursor-pointer py-1 px-1 rounded group hover:(bg-red-50) active:(transform translate-y-px bg-red-100)"
+      ref={setNodeRef}
+      style={style}
+      className="flex items-center align-center cursor-pointer py-1 px-1 relative rounded group hover:(bg-red-50) active:(transform translate-y-px bg-red-100)"
       onClick={(e) => {
         onDone(todo);
         e.preventDefault();
       }}
+      {...listeners}
+      {...attributes}
     >
       <Checkbox isChecked={todo.isDone} />
       <div className={`ml-1 flex-1 text-xl ${todo.isDone && "line-through"}`}>
