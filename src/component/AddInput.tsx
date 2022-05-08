@@ -1,6 +1,7 @@
 import { createRef, useState } from "react";
 import Todo from "../model/Todo";
 import { nanoid } from "nanoid";
+import toast from "react-hot-toast";
 
 interface AddInputProps {
   onAddTodo: (todo: Todo) => void;
@@ -20,6 +21,7 @@ function AddInput({ onAddTodo }: AddInputProps) {
       });
     } else {
       // toast nothing added
+      toast.error("内容为空");
     }
     setTodo("");
   }
