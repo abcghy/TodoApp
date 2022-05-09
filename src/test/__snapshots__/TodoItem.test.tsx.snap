@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test todo item display and listener 1`] = `
+<div
+  aria-describedby=""
+  aria-roledescription="sortable"
+  className="flex items-center align-center cursor-pointer py-1 px-1 relative rounded group hover:(bg-red-50) active:(transform translate-y-px bg-red-100)"
+  onClick={[Function]}
+  role="button"
+  style={
+    Object {
+      "transform": undefined,
+      "transition": undefined,
+      "zIndex": 0,
+    }
+  }
+  tabIndex={0}
+>
+  <div
+    className="cursor-pointer my-auto"
+  >
+    <svg
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <desc>
+        Download more icon variants from https://tabler-icons.io/i/square
+      </desc>
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+        stroke="none"
+      />
+      <rect
+        height="16"
+        rx="2"
+        width="16"
+        x="4"
+        y="4"
+      />
+    </svg>
+  </div>
+  <div
+    className="ml-1 flex-1 text-xl false"
+  >
+    Read a book every month
+  </div>
+  <div
+    className="invisible group-hover:visible text-white bg-hex-DB4D37 rounded px-1 py-0.5 select-none text-sm hover:(bg-hex-B92B15) active:(bg-hex-970903 transform translate-y-px)"
+    onClick={[Function]}
+  >
+    删除
+  </div>
+</div>
+`;
+
+exports[`test todo item display and listener 2`] = `
+<div
+  aria-describedby=""
+  aria-roledescription="sortable"
+  className="flex items-center align-center cursor-pointer py-1 px-1 relative rounded group hover:(bg-red-50) active:(transform translate-y-px bg-red-100)"
+  onClick={[Function]}
+  role="button"
+  style={
+    Object {
+      "transform": undefined,
+      "transition": undefined,
+      "zIndex": 0,
+    }
+  }
+  tabIndex={0}
+>
+  <div
+    className="cursor-pointer my-auto"
+  >
+    <svg
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <desc>
+        Download more icon variants from https://tabler-icons.io/i/square-check
+      </desc>
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+        stroke="none"
+      />
+      <rect
+        height="16"
+        rx="2"
+        width="16"
+        x="4"
+        y="4"
+      />
+      <path
+        d="M9 12l2 2l4 -4"
+      />
+    </svg>
+  </div>
+  <div
+    className="ml-1 flex-1 text-xl line-through"
+  >
+    Read a book every month
+  </div>
+  <div
+    className="invisible group-hover:visible text-white bg-hex-DB4D37 rounded px-1 py-0.5 select-none text-sm hover:(bg-hex-B92B15) active:(bg-hex-970903 transform translate-y-px)"
+    onClick={[Function]}
+  >
+    删除
+  </div>
+</div>
+`;
