@@ -31,6 +31,7 @@ function TodoItem({ todo, onDone, onDelete }: TodoItemProps) {
       ref={setNodeRef}
       style={style}
       className="flex items-center align-center cursor-pointer py-1 px-1 relative rounded group hover:(bg-red-50) active:(transform translate-y-px bg-red-100)"
+      data-cy="todo-item"
       onClick={(e) => {
         onDone(todo);
         e.preventDefault();
@@ -44,6 +45,7 @@ function TodoItem({ todo, onDone, onDelete }: TodoItemProps) {
       </div>
       <div
         className="invisible group-hover:visible text-white bg-hex-DB4D37 rounded px-1 py-0.5 select-none text-sm hover:(bg-hex-B92B15) active:(bg-hex-970903 transform translate-y-px)"
+        data-cy="todo-item-delete"
         onClick={(e) => {
           e.stopPropagation();
           e.preventDefault();
